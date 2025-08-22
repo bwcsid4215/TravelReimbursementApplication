@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:h2:mem:userdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    # If you want a persistent H2 file instead of in-memory, replace url:
+    # url: jdbc:h2:file:./data/userdb
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # create / create-drop / update / validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+rentkaro:
+  app:
+    jwtSecret: JHG78sd87asd76a8sd7as6d7a8sd7a6sda87sd6a87sd6a87sd68as7d6a87sd68a7sd6a87sd    # <-- Your JWT secret key
+    jwtExpirationMs: 86400000       # <-- 24 hours in milliseconds
